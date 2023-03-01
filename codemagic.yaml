@@ -5,8 +5,7 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       groups:
-        - github
-        - sonar
+        - sonar_credentials
     triggering:
       events:
         - push
