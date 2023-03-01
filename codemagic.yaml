@@ -6,6 +6,7 @@ workflows:
     environment:
       groups:
         - github
+        - sonar
     triggering:
       events:
         - push
