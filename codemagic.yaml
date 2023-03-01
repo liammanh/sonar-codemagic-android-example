@@ -16,9 +16,14 @@ workflows:
     artifacts:
       - app/build/outputs/bundle/**/*.aab
     scripts:
-      - name: Sonar Analyze
-        script: ./gradlew sonarqube
-        test_report: app/build/test-results/testDebugUnitTest/*.xml
-        ignore_failure: false
+      - |
+          # Generate and upload code analysis report
+          ./gradlew sonar \
+          -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+          -Dsonar.organization=$SONAR_ORG_KEY \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=$SONAR_TOKEN \
+          -Dsonar.projectVersion=1.0.0-cm \
+          -Dsonar.coverage.jacoco.xmlReportPaths=**/jacocoTestReport/jacocoTestReport.xml
       - name: Build Android app
         script: ./gradlew assembleRelease
