@@ -1,0 +1,17 @@
+workflows:
+  sample-workflow:
+    name: Codemagic Sonar Sample
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - github
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+      cancel_previous_builds: true
+    artifacts:
+      - app/build/outputs/bundle/**/*.aab
+    scripts:
