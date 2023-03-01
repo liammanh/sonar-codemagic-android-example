@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
 import androidx.navigation.fragment.findNavController
 import com.gogox.sonar_codemagic_example.databinding.FragmentSecondBinding
 
@@ -40,5 +41,9 @@ class SecondFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun plus(first: Int, last: Int): Int {
+        return first + last
     }
 }
