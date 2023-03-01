@@ -15,3 +15,9 @@ workflows:
     artifacts:
       - app/build/outputs/bundle/**/*.aab
     scripts:
+      - name: Sonar Analyze
+        script: ./gradlew sonarqube
+        test_report: app/build/test-results/testDebugUnitTest/*.xml
+        ignore_failure: false
+      - name: Build Android app
+        script: ./gradlew assembleRelease
