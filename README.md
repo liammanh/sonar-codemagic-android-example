@@ -1,0 +1,1 @@
+# sonar-codemagic-android-example
